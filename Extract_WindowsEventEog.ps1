@@ -3,6 +3,10 @@ $Results = @()
 
 #EVENT 4624 4625 ALL_GET
 $ALLEVENT = get-winevent -FilterHashtable @{
+    # path      : Specify the Eventlog file name to search / extract
+    # id        : EventID
+    # starttime : Start time
+    # endtime   : End time
     path='sec.evtx';
     logname="Security";
     id = (4624,4625);
@@ -22,4 +26,5 @@ ForEach ($Event in $ALLEVENT) {
 }
 
 #Export results to csv file
+# - log.csv : logFile Name
 $Results| Export-Csv -Path log.csv -NoTypeInformation -Encoding UTF8
