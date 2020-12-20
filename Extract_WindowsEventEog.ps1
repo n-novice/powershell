@@ -1,4 +1,4 @@
-#Create array where all objects for export will be storred
+#Create objects for export log
 $Results = @()
 
 #EVENT 4624 4625 ALL_GET
@@ -17,10 +17,9 @@ ForEach ($Event in $ALLEVENT) {
     $Event.Message = $Event.Message -replace "`r`n", ";"
 	$Event.Message = $Event.Message -replace "`t", ""
 
-    #Add object to the previously created array
+    #Add object
     $Results += $Event
 }
 
 #Export results to csv file
-
 $Results| Export-Csv -Path log.csv -NoTypeInformation -Encoding UTF8
