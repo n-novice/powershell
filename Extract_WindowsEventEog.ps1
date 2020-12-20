@@ -1,7 +1,9 @@
 #Create objects for export log
 $Results = @()
 
-#EVENT 4624 4625 ALL_GET
+# Extract a specific event ID from the event log
+#  - Event ID: 4624 The account logged on successfully
+#  - Event ID: 4625 Failed to log on to the account
 $ALLEVENT = get-winevent -FilterHashtable @{
     # path      : Specify the Eventlog file name to search / extract
     # id        : EventID
